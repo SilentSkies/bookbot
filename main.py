@@ -4,8 +4,8 @@ def main():
     path = "books/frankenstein.txt"
     text = get_book_text(path)
     
-    data = character_count_lowercase(text)
-    sorted_list = return_sorted_characters(data)
+    data = dict_of_all_chars_to_lower_case(text)
+    sorted_list = characters_dict_to_sorted_list(data)
     print(f"--- Begin report of {path} ---")
     print(f"{count_words(text)} words found in the document \n\n")
     report_book_stats(sorted_list)
@@ -22,7 +22,7 @@ def count_words(text:str) -> int:
     words = text.split()
     return len(words)
 
-def character_count_lowercase(text:str) -> dict:
+def dict_of_all_chars_to_lower_case(text:str) -> dict:
     lower_text = text.lower()
     count = {}
     for char in lower_text:
@@ -32,7 +32,7 @@ def character_count_lowercase(text:str) -> dict:
             count[char] +=1
     return count
 
-def return_sorted_characters(character_count:dict) -> list:
+def characters_dict_to_sorted_list(character_count:dict) -> list:
     '''
     ### Data in
     dictionary where character is the key and count is the value
