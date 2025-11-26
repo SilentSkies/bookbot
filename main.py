@@ -1,9 +1,13 @@
+import sys
+
 from stats import word_count, letters_in_book, sort_letters
 
 
 
-def get_book_text():
-    book = "books/frankenstein.txt"
+
+def get_book_text(book_path):
+    
+    book = book_path
     with open(book, "r", encoding="utf-8-sig") as f:
         book = f.read()
         num_words = word_count(book)
@@ -23,5 +27,11 @@ def get_book_text():
         print("============= END ===============")
 
 
+def main():
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    return get_book_text(sys.argv[1])
+
 if __name__ == "__main__":
-    get_book_text()
+    main()
